@@ -2,7 +2,7 @@ package day0906;
 
 import java.util.Arrays;
 import java.util.Scanner;
-
+ // 행렬 - 리스트- 우선순위 큐 순서대로 공부하기
 public class 프림_인접행렬_연습 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner("7 11\r\n"
