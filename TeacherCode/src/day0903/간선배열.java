@@ -1,9 +1,9 @@
-package t;
-
+package day0903;
 import java.util.List;
 import java.util.Scanner;
 
 public class 간선배열 {
+
 
 /////////////////////클래스
 	static class Edge {

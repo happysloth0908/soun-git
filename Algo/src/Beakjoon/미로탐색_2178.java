@@ -1,4 +1,4 @@
-package t;
+package Beakjoon;
 
 import java.util.LinkedList;
 import java.util.Queue;
