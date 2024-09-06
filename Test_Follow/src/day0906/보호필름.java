@@ -2,13 +2,14 @@ package day0906;
 
 import java.util.Scanner;
 
+// 미완. 라이브 코드 보기 
 public class 보호필름 {
 	static int D, W, K; //D: 행 3~13 W: 열 1~20 K: 통과기준 1~D
 	static int[][] film;
 	static int ans;
 	
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(input);
+		Scanner sc = new Scanner(System.in);
 		int T = sc.nextInt();
 		for (int t = 1; t <= T; t++) {
 			D = sc.nextInt();
