@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
 		String pass = members.get(id); //받은 id 에 해당하는 비밀번호를 get 해주세요~! -> 없으면 null
 		if(pass != null) { 
 			if(password.equals(pass)) {
-				result = "로그인 성공~!";
+				result = "로그인 성공~!!";
 			}
 		}
 
