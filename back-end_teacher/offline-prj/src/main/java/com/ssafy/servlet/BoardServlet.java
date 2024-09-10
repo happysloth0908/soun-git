@@ -23,6 +23,7 @@ public class BoardServlet extends HttpServlet{
  * ----------------
  *  
  */
+	// http://localhost:8080/offline-prj/board
 	public class Board{
 		String title;
 		String content;
