@@ -19,4 +19,24 @@
     <servlet-name>BoardServlet</servlet-name>
     <url-pattern>/BoardServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LifeCycleServlet</display-name>
+    <servlet-name>LifeCycleServlet</servlet-name>
+    <servlet-class>com.ssafy.servlet.LifeCycleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LifeCycleServlet</servlet-name>
+    <url-pattern>/lifecycle</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BoardFrontServlet</display-name>
+    <servlet-name>BoardFrontServlet</servlet-name>
+    <servlet-class>BoardFrontServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BoardFrontServlet</servlet-name>
+    <url-pattern>/BoardFrontServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
