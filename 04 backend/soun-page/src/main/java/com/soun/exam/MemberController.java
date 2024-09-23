@@ -39,7 +39,7 @@ public class MemberController extends HttpServlet{
 
 	
 
-	private void login(HttpServletRequest req, HttpServletResponse res) {
+	private void login(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		String id = req.getParameter("id");
 		String password = req.getParameter("password");
 		
@@ -51,8 +51,12 @@ public class MemberController extends HttpServlet{
 		memberDao.loginMember(member);
 		
 		if(member != null) { // 로그인 성공했으면
-//			HttpSession session = ;
+			HttpSession session = req.getSession();
+			session.setAttribute(id, member);
+			res.sendRedirect(req.getContextPath() + "/main");
+			
 		}
+		res.sendRedirect(req.getContextPath() + "/member?action=loginForm");
 	}
 
 	private void loginForm(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
