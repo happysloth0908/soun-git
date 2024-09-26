@@ -80,8 +80,13 @@ public class BoardController extends HttpServlet {
 		int no = Integer.parseInt(req.getParameter("no"));
 		Board board = boardDao.selectBoardByNo(no); // 보드 번호 가져오기 
 		req.setAttribute("board", board);
+		/*
+		 * RequestDispatcher 란 현재 request에 담긴 정보를 저장하고 있다가 그 다음 페이지 그 다음 페이지에도 해당 정보를
+		 * 볼수있게 계속 저장하는 기능.
+		 */
 		RequestDispatcher rd = req.getRequestDispatcher("/board/edit.jsp");
 		rd.forward(req, resp);
+		
 	
 	}
 	private void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
