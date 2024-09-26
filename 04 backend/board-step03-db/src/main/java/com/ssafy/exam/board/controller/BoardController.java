@@ -52,17 +52,39 @@ public class BoardController extends HttpServlet {
 			detail(req, resp);
 		} else if ("delete".equals(action)) {
 		// 등록 처리하자...
-			delete(req, resp);
+			try {
+				delete(req, resp);
+			} catch (ServletException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} else if ("editForm".equals(action)) {
 			// 등록 처리하자...
 			editForm(req, resp);
 	} else if ("edit".equals(action)) {
 		// 등록 처리하자...
-		edit(req, resp);
+		try {
+			edit(req, resp);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	}
 
-	private void edit(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	private void edit(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException, SQLException{
 		int no =  Integer.parseInt(req.getParameter("no"));
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
@@ -100,7 +122,7 @@ public class BoardController extends HttpServlet {
 		rd.forward(req, resp);
 	
 	}
-	private void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	private void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException ,SQLException{
 		int no = Integer.parseInt(req.getParameter("no"));
 		try {
 			boardDao.deleteBoard(no);
@@ -161,7 +183,12 @@ public class BoardController extends HttpServlet {
 		board.setTitle(title);
 		board.setContent(content);
 		board.setWriter(writer);
-		boardDao.insertBoard(board);
+		try {
+			boardDao.insertBoard(board);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		// 등록한다.
 		// http://localhost/board-step01-mvc/board
 		// 목록 페이지로 이동한다.(목록에 필요한 데이터를 준비하는 서블릿으로 이동)

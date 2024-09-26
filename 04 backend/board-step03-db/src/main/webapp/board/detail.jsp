@@ -26,6 +26,10 @@
 	 	<div>${board.content}</div>
 	 </div>
 	 <div class="board-detail">
+	 	<label>작성자</label>
+	 	<div>${board.writer}</div>
+	 </div>
+	 <div class="board-detail">
 	 	<label>조회수</label>
 	 	<div>${board.viewCnt}</div>
 	 </div>
