@@ -39,7 +39,7 @@ public class BoardController extends HttpServlet {
 		} else if ("writeForm".equals(action)) {
 			// 등록폼 페이지 이동하자...
 			writeForm(req, resp);
-		} else if ("write".equals(action)) {
+		}  else if ("write".equals(action)) {
 			// 등록 처리하자...
 			write(req, resp);
 		} else if ("detail".equals(action)) {
