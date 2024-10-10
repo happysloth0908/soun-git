@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="ingredient" class="=com.ssafy.food.Ingredient">  
+		<property name="name">
+			<value>계란</value>
+		</property>
+	</bean>
+	
+	<bean id="cook" class="com.ssafy.food.Cook">
+		<property name="ingredient">
+			<ref bean="ingredient" />	
+		</property>
+	</bean>
+
+
+</beans>

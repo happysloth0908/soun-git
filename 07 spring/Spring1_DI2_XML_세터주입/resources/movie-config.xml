@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!--  -->
+	
+	<bean id="director" class="com.ssafy.movie.Director">
+<!-- 		<constructor-arg>
+			<value>크리스토퍼 놀란</value>
+		</constructor-arg>
+ -->
+ 	<!--  이렇게 한 줄로 작성도 가능 -->		
+		<property name="name" value="크리스토퍼 놀란"></property>
+	</bean>
+	<!-- movie 객체를 빈으로 설정하기 -->
+	<bean id="movie" class="com.ssafy.movie.Movie">
+		<property name="director" ref="director"/>
+	</bean>
+
+</beans>
