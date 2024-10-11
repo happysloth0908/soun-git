@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+	<!-- bean definitions here -->
+
+	<bean id="boardController" class="com.ssafy.board.controller.BoardController">
+		<constructor-arg ref="boardService" />
+	</bean>
+	<bean id="boardService" class="com.ssafy.board.model.service.BoardServiceImpl">
+		<constructor-arg ref="boardDao" />
+	</bean>
+	<bean id="boardDao" class="com.ssafy.board.model.BoardDAOImpl"></bean>
+	<bean id="prjAspect" class="com.ssafy.aspect.PrjAspect">
+	</bean>
+	<aop:config>
+		<aop:aspect ref="prjAspect">
+			<aop:pointcut expression="execution(* com.ssafy.board.model.service.BoardServiceImpl.*(..))" id="pCut"/>
+			<aop:before method="log" pointcut-ref="pCut"/>
+			<aop:after-returning method="after" pointcut-ref="pCut"/>
+		</aop:aspect>
+	</aop:config>
+	
+		
+</beans>

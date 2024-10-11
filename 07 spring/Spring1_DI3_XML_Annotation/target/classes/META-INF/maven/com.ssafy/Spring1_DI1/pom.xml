@@ -10,6 +10,11 @@
     	<artifactId>spring-context</artifactId>
     	<version>6.1.13</version>
 	</dependency>
+  	<dependency>
+  		<groupId>Spring_Day02_AOP_2_XML</groupId>
+  		<artifactId>Spring_Day02_AOP_2_XML</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
   </dependencies>
   
   
