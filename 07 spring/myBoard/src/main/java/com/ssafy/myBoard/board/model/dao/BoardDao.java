@@ -11,4 +11,6 @@ public interface BoardDao {
 
 	void registBoard(Board board) throws SQLException;
 
+	Board getBoardByNo(int no) throws SQLException;
+
 }

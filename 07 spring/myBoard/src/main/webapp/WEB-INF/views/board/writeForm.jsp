@@ -8,7 +8,7 @@
 	<form action="${pageContext.request.contextPath}/board/write" method="POST">
 		<h2>글쓰기</h2>
 		<div>
-			제목 <input type="text" name="no">
+			제목 <input type="text" name="title">
 		</div>
 		<div>
 			글쓴이 <input type="text" name="writer">

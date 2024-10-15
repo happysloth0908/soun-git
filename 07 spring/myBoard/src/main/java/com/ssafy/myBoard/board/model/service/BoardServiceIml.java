@@ -1,5 +1,6 @@
 package com.ssafy.myBoard.board.model.service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -24,6 +25,11 @@ public class BoardServiceIml implements BoardService{
 	@Override
 	public void write(Board board) throws Exception {
 		boardDao.registBoard(board);
+	}
+
+	@Override
+	public Board getBoardByno(int no) throws SQLException {
+		return boardDao.getBoardByNo(no);
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.ssafy.myBoard.board.controller;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -37,6 +38,14 @@ public class BoardController {
 	public String write(Board board) throws Exception {
 		// 작성한거 등록해줘야 함. 
 		boardService.write(board);
-		return "redirect : /list";
+		return "redirect:/board/list";
+	}
+	@GetMapping("/detail")
+	public String detail(int no, Model model) throws SQLException {
+		System.out.println("no = " + no);
+		Board board = boardService.getBoardByno(no);
+		model.addAttribute("board", board);
+		return "/board/detail";
+		
 	}
 }
