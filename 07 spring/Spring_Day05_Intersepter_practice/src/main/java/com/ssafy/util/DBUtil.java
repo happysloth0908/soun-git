@@ -12,8 +12,8 @@ public class DBUtil {
      * serverTimezone=UTC 설정이 없으면 오류가 발생하므로 주의한다.
      */
 	private static final String url = "jdbc:mysql://localhost:3306/interceptor_practice?serverTimezone=UTC";
-	private static final String username = "ssafy";
-	private static final String password = "ssafy";
+	private static final String username = "soun";
+	private static final String password = "soun";
 	private static final String driverName = "com.mysql.cj.jdbc.Driver";
     private static DBUtil instance = new DBUtil();
     
