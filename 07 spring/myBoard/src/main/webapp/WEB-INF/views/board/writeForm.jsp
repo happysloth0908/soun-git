@@ -5,7 +5,10 @@
 <title></title>
 </head>
 <body>
-	<form action="${pageContext.request.contextPath}/board/write" method="POST">
+	<form method="POST" action="${pageContext.request.contextPath}/board/write" 
+		enctype="multipart/form-data">
+
+		<!-- enctype="application/x-www-form-urlencoded" -->
 		<h2>글쓰기</h2>
 		<div>
 			제목 <input type="text" name="title">
@@ -16,6 +19,10 @@
 		<div>
 			내용
 			<textarea type="text" name="content" placeholder="글 내용을 입력하세요"></textarea>
+		</div>
+		<div>
+			파일첨부
+			<input type="file" name="attach" >
 		</div>
 
 		<button>등록하기</button>

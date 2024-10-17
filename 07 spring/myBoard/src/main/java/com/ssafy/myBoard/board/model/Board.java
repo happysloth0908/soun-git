@@ -8,6 +8,11 @@ public class Board {
 	private int viewCnt;
 	private String regDate;
 	
+	private BoardFile boardFile;
+	public BoardFile setBoardFile( BoardFile boardFile) {
+		return boardFile;
+	}
+	
 	public Board() {}
 	
 	
@@ -61,6 +66,13 @@ public class Board {
 		return "Board [no=" + no + ", title=" + title + ", content=" + content + ", writer=" + writer + ", viewCnt="
 				+ viewCnt + ", regDate=" + regDate + "]";
 	}
+
+
+	public BoardFile getBoardFile() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	
 
