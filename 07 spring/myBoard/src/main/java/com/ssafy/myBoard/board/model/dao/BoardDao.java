@@ -1,6 +1,5 @@
 package com.ssafy.myBoard.board.model.dao;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import com.ssafy.myBoard.board.model.Board;
@@ -8,15 +7,17 @@ import com.ssafy.myBoard.board.model.BoardFile;
 
 public interface BoardDao {
 
-	List<Board> selectBoard() throws SQLException;
+	List<Board> selectBoard();
 
-//	void registBoard(Board board) throws SQLException;
+//	void registBoard(Board board) ;
 
-	Board getBoardByNo(int no) throws SQLException;
+	Board getBoardByNo(int no) ;
 
-	void insertBoardFile(BoardFile boardFile) throws SQLException;
+	void insertBoardFile(BoardFile boardFile) ;
 
-	void insertBoard(Board board) throws SQLException;
+	void insertBoard(Board board) ;
+
+	BoardFile selectBoardFileByNo(int no);
 
 //	Board selectBoardByNo(int no);
 

@@ -1,5 +1,7 @@
 package com.ssafy.myBoard.board.model;
 
+import java.io.File;
+
 public class BoardFile {
 
 	private int fileNo;

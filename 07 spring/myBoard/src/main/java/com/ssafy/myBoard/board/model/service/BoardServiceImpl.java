@@ -26,7 +26,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public Board detail(int no) throws SQLException {
 		Board board = boardDao.getBoardByNo(no);
-		board.setBoardFile(boardDao.getBoardByNo(no));
+		board.setBoardFile(boardDao.selectBoardFileByNo(no));
 		return board;
 		
 	}
@@ -35,7 +35,10 @@ public class BoardServiceImpl implements BoardService {
 	public void writeBoard(Board board) throws SQLException {
 		boardDao.insertBoard(board);
 		BoardFile boardFile = board.getBoardFile();
-		boardFile.setNo(board.getNo());
-		boardDao.insertBoardFile(boardFile);
+		System.out.println("boardFile:" + boardFile);
+		if(boardFile != null) { // 파일이 있으면 파일 넣기 
+			boardFile.setNo(board.getNo());
+			boardDao.insertBoardFile(boardFile);
+		}
 	}
 }

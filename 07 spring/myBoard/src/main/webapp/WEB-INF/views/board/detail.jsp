@@ -23,5 +23,8 @@
 			<th>${board.viewCnt}</th>
 			<th>${board.regDate}</th>
 		</tr>
+		<a href="${pageContext.request.contextPath}/upload/${filePath}/${fileName}">"${pageContext.request.contextPath}/upload/${filePath}/${fileName}"</a>
+		<img src="${pageContext.request.contextPath}/upload/${filePath}/${fileName}">
+	</table>
 </body>
 </html>

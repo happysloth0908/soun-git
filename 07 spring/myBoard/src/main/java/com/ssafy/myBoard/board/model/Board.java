@@ -9,8 +9,8 @@ public class Board {
 	private String regDate;
 	
 	private BoardFile boardFile;
-	public BoardFile setBoardFile( BoardFile boardFile) {
-		return boardFile;
+	public void setBoardFile( BoardFile boardFile) {
+		this.boardFile = boardFile;
 	}
 	
 	public Board() {}
@@ -69,8 +69,7 @@ public class Board {
 
 
 	public BoardFile getBoardFile() {
-		// TODO Auto-generated method stub
-		return null;
+		return boardFile;
 	}
 
 	
