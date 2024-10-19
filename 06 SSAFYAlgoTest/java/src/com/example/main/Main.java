@@ -8,6 +8,8 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class Main {
 	private static String NICKNAME = "대전_4반_김소운";
 	private static String[][] mapData; // 맵 정보
+	private static boolean[][] Rvisited; // 맵 정보
+	
 	private static Map<String, String[]> allies = new HashMap<>(); // 아군 정보
 	private static Map<String, String[]> enemies = new HashMap<>(); // 적군 정보
 	private static String[] codes; // 암호문 정보
