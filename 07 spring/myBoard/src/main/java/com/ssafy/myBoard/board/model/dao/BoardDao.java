@@ -2,14 +2,12 @@ package com.ssafy.myBoard.board.model.dao;
 
 import java.util.List;
 
-import com.ssafy.myBoard.board.model.Board;
-import com.ssafy.myBoard.board.model.BoardFile;
+import com.ssafy.myBoard.board.model.dto.Board;
+import com.ssafy.myBoard.board.model.dto.BoardFile;
 
 public interface BoardDao {
 
 	List<Board> selectBoard();
-
-//	void registBoard(Board board) ;
 
 	Board getBoardByNo(int no) ;
 
@@ -19,7 +17,8 @@ public interface BoardDao {
 
 	BoardFile selectBoardFileByNo(int no);
 
-//	Board selectBoardByNo(int no);
+	void deleteBoard(int no);
 
+	void updateBoard(Board board);
 
 }

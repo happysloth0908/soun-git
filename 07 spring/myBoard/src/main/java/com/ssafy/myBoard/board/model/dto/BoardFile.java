@@ -1,4 +1,4 @@
-package com.ssafy.myBoard.board.model;
+package com.ssafy.myBoard.board.model.dto;
 
 import java.io.File;
 

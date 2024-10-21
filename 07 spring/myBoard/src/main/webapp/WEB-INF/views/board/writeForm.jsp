@@ -11,14 +11,14 @@
 		<!-- enctype="application/x-www-form-urlencoded" -->
 		<h2>글쓰기</h2>
 		<div>
-			제목 <input type="text" name="title">
+			제목 <input type="text" name="title" required="required">
 		</div>
 		<div>
-			글쓴이 <input type="text" name="writer">
+			글쓴이 <input type="text" name="writer" required="required">
 		</div>
 		<div>
 			내용
-			<textarea type="text" name="content" placeholder="글 내용을 입력하세요"></textarea>
+			<textarea type="text" name="content" placeholder="글 내용을 입력하세요" required="required"></textarea>
 		</div>
 		<div>
 			파일첨부

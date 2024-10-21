@@ -5,9 +5,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.ssafy.myBoard.board.model.Board;
-import com.ssafy.myBoard.board.model.BoardFile;
 import com.ssafy.myBoard.board.model.dao.BoardDao;
+import com.ssafy.myBoard.board.model.dto.Board;
+import com.ssafy.myBoard.board.model.dto.BoardFile;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -24,7 +24,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public Board detail(int no) throws SQLException {
+	public Board detail(int no) {
 		Board board = boardDao.getBoardByNo(no);
 		board.setBoardFile(boardDao.selectBoardFileByNo(no));
 		return board;
@@ -41,4 +41,15 @@ public class BoardServiceImpl implements BoardService {
 			boardDao.insertBoardFile(boardFile);
 		}
 	}
+
+	@Override
+	public void deleteNo(int no) {
+		boardDao.deleteBoard(no);
+	}
+
+	@Override
+	public void updateBoard(Board board) {
+		boardDao.updateBoard(board);
+	}
+
 }

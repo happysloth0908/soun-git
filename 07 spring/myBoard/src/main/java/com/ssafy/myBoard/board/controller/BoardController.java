@@ -5,10 +5,10 @@ import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.ssafy.myBoard.board.model.Board;
-import com.ssafy.myBoard.board.model.BoardFile;
+import com.ssafy.myBoard.board.model.dto.Board;
+import com.ssafy.myBoard.board.model.dto.BoardFile;
 import com.ssafy.myBoard.board.model.service.BoardService;
 
 @Controller
@@ -34,8 +34,6 @@ public class BoardController {
 
 	@GetMapping("/list")
 	public void list(Model model) throws Exception {
-//		List<Board> list = boardService.list();
-//		model.addAttribute("list", list);
 		model.addAttribute("list", boardService.list());
 	}
 
@@ -44,33 +42,6 @@ public class BoardController {
 		return "board/writeForm";
 	}
 
-//	@PostMapping("/write")
-//	//attach 에 파일이 들어가 있음. 
-//	public String write(@RequestParam("attach") MultipartFile attach, Board board) throws Exception {
-//		// 작성한거 등록해줘야 함. 
-//		String oriName = attach.getOriginalFilename();
-//		if(oriName.length() > 0) { // 사용자가 파일을 선택했으면
-//			String subDir = new SimpleDateFormat("/yyyy/MM/dd/HH").format(new Date());
-//			File dir = new File("c:/SSAFY/uploads" + subDir); // 경로
-//			dir.mkdir(); 
-////			File f = new File(dir,UUID.randomUUID().toString() + oriName); // 앞에가 디렉토리에다가 파일 이름 합친거 
-//			String systemName = UUID.randomUUID().toString() + oriName;
-//			attach.transferTo(new File(dir,systemName)); // 메모리의 파일 정보를 특정 위치에 저장해주는 메서드
-//			
-//			//데이터 베이스에 저장하기 위한 준비
-//			BoardFile boardFile = new BoardFile();
-////			boardFile.setFileNo(0); // 데이터 입력시 자동 입력됨. 
-//			boardFile.setFilePath(subDir); 
-//			boardFile.setOriName(oriName);
-//			boardFile.setSystemName(systemName);
-//			boardFile.setNo(0); 		// board 테이블에 데이터가 입력되어야 입력할 수 있음. 
-//			board.setBoardFile(boardFile);
-//		
-//		}
-//		
-//		boardService.writeBoard(board);
-//		return "redirect:/board/list";
-//	}
 
 	@PostMapping("/write")
 	public String write(@RequestParam("attach") MultipartFile attach, Board board) throws Exception {
@@ -112,26 +83,45 @@ public class BoardController {
 	public String detail( @RequestParam("no") int no, Model model) throws SQLException, IllegalStateException, IOException {
 		System.out.println("no = " + no);
 		Board board = boardService.detail(no);
+		
 		BoardFile file = board.getBoardFile();
-		String filePath = file.getFilePath();
-//		String filePath = boardFile.getFilePath();
-//		model.addAttribute("filePath", filePath);
-		System.out.println("file.getSystemName() : " + file.getSystemName());
 		if (file != null && file.getSystemName().length() > 0) {
+			String filePath = file.getFilePath();
 			String fileName = file.getSystemName();
 			System.out.println("fileName :" + fileName);
 			// 내가 만든 img 폴더를 가지고 오기
 			// 스프링에서 파일이나 클래스 등 리소스를 로드할 땐 인터페이스인 리소스 로더가 있음.
-//			Resource resource = resourceLoader.getResource("classpath:/static/img");
 
-//			file.transferTo(new File(resource.getFile(), fileName));
-			
-			model.addAttribute("board", board);
 			model.addAttribute("fileName", fileName);
 			model.addAttribute("filePath", filePath);
 		}
+		model.addAttribute("board", board);
 		return "/board/detail";
-
 	}
-
+	
+	@GetMapping("/delete")
+	public String deleteBoard(@RequestParam("no") int no) {
+		boardService.deleteNo(no);
+		
+		return "redirect:list";
+	}
+	
+	@GetMapping("/updateform")
+	public String updateForm(@RequestParam("no") int no, Model model) {
+		Board board = boardService.detail(no);
+		model.addAttribute("board", board);
+		return "/board/updateform";
+	}
+	
+	@PostMapping("/update")
+	public String updateBoard(Board board, BoardFile file) {
+//		System.out.println(board);
+		if()
+		
+		boardService.updateBoard(board);
+		return "redirect:detail?no=" + board.getNo();
+	}
+	
+	
+	
 }

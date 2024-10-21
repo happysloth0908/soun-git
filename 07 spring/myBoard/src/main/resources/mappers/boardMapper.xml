@@ -5,8 +5,8 @@
 <!-- 패키지와 구현체 이름 합친거 -->
 <mapper namespace="com.ssafy.myBoard.board.model.dao.BoardDao">
 
-
-	<resultMap type="Board" id="boardMap">
+	<!-- 이제 이것도 필요없음.  -->
+<!-- 	<resultMap type="Board" id="boardMap">
 		<result column="no" property="no" />
 		<result column="title" property="title" />
 		<result column="writer" property="writer" />
@@ -14,36 +14,30 @@
 		<result column="view_cnt" property="viewCnt" />
 		<result column="reg_date" property="regDate" />
 	</resultMap>
-
-	<!-- .java에서 접근 할 수 있도록 식별자 만들기 => id 그냥 메소드 이름으로 하기 , 이름 중복을 피하고자 namespace 
-		를 하는거임. 합치면 고유해지니까 -->
-	<!-- <select id="selectBoard" resultType="Board"> -->
-	<!-- <resultMap type="com.ssafy.myBoard.board.model.BoardFile" id="boardFileMap"> -->
-
+ -->
 	<!-- 타입 알리아스 적었으니까 간출일 수 있음. -->
-	<resultMap type="BoardFile" id="boardFileMap">
+<!-- 	<resultMap type="BoardFile" id="boardFileMap">
 		<result column="file_no" property="fileNo" />
 		<result column="no" property="no" />
 		<result column="file_path" property="filePath" />
 		<result column="ori_name" property="oriName" />
 		<result column="system_name" property="systemName" />
-	</resultMap>
+	</resultMap> -->
 
 
-	<select id="selectBoard" resultMap="boardMap">
-		<!-- SELECT no, title, writer, view_cnt, reg_date -->
-		<!-- boardMap 에 다 설정해놨기 때문에 가독성 문제 없음. -->
+	<select id="selectBoard" resultType="Board">
 		SELECT *
 		FROM board
-		ORDER BY NO DESC
+		ORDER BY no DESC<!-- !!!! -->
 	</select>
-	<!-- resultType 결과 반환타입 -->
+	
 	<select id="getBoardByNo" parameterType="int"
-		resultMap="boardMap">
+		resultType="Board">
 		SELECT no, title, writer, content, view_cnt, reg_date
 		FROM
-		board WHERE no = ${no}
+		board WHERE no = #{no}
 	</select>
+	
 	<insert id="insertBoard" parameterType="Board"
 		useGeneratedKeys="true" keyProperty="no">
 		<!-- <selectKey keyProperty="no" resultType="int" order="AFTER"> select 
@@ -51,19 +45,30 @@
 		insert into board(title, writer, content, view_cnt, reg_date)
 		values(#{title}, #{writer}, #{content}, #{viewCnt}, now())
 	</insert>
+	
 	<insert id="insertBoardFile"
-		parameterType="com.ssafy.myBoard.board.model.BoardFile">
+		parameterType="BoardFile">
 		insert into
 		board_file (file_path, ori_name, system_name, no) values(#{filePath},
 		#{oriName}, #{systemName}, #{no})
 	</insert>
 
 	<select id="selectBoardFileByNo" parameterType="int"
-		resultMap="boardFileMap">
+		resultType="BoardFile">
 		select file_no, no, file_path, ori_name, system_name
 		from
 		board_file
 		where no = #{no}
 	</select>
+	
+	<delete id="deleteBoard" parameterType="int">
+		DELETE FROM board 
+		WHERE no = #{no}
+	</delete>
+	<update id="updateBoard" parameterType="Board">
+		UPDATE board 
+		SET title = #{title}, content = #{content}
+		WHERE no = #{no}
+	</update>
 
 </mapper>
