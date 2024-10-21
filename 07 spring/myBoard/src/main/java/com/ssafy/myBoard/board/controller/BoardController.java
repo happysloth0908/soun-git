@@ -113,14 +113,14 @@ public class BoardController {
 		return "/board/updateform";
 	}
 	
-	@PostMapping("/update")
-	public String updateBoard(Board board, BoardFile file) {
-//		System.out.println(board);
-		if()
-		
-		boardService.updateBoard(board);
-		return "redirect:detail?no=" + board.getNo();
-	}
+//	@PostMapping("/update")
+//	public String updateBoard(Board board, BoardFile file) {
+////		System.out.println(board);
+//		if()
+//		
+//		boardService.updateBoard(board);
+//		return "redirect:detail?no=" + board.getNo();
+//	}
 	
 	
 	
