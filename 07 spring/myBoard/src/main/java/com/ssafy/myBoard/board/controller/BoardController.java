@@ -6,6 +6,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ssafy.myBoard.board.model.BoardSearch;
 import com.ssafy.myBoard.board.model.dto.Board;
 import com.ssafy.myBoard.board.model.dto.BoardFile;
 import com.ssafy.myBoard.board.model.service.BoardService;
@@ -31,10 +33,12 @@ public class BoardController {
 	public BoardController(BoardService boardService) {
 		this.boardService = boardService;
 	}
-
+	// /list?page=3&listSize=5
 	@GetMapping("/list")
-	public void list(Model model) throws Exception {
-		model.addAttribute("list", boardService.list());
+	public void list(BoardSearch boardSearch, Model model) {
+		Map<String, Object> result = boardService.list(boardSearch);
+		model.addAttribute("list", result.get("list"));
+		model.addAttribute("pr", result.get("pr"));
 	}
 
 	@GetMapping("/writeForm")

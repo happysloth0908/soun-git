@@ -1,13 +1,17 @@
 package com.ssafy.myBoard.board.model.service;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import com.ssafy.myBoard.board.model.BoardSearch;
 import com.ssafy.myBoard.board.model.dao.BoardDao;
 import com.ssafy.myBoard.board.model.dto.Board;
 import com.ssafy.myBoard.board.model.dto.BoardFile;
+import com.ssafy.util.PageResult;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -19,8 +23,22 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<Board> list() throws Exception {
-		return boardDao.selectBoard();
+	public Map<String, Object> list(BoardSearch boardsearch) {
+		// 게시물 목록 데이터
+		List<Board> list = boardDao.selectBoard(boardsearch);
+		//페이징 처리를 위한 전체 게시물 카운트
+		int totalCount = boardDao.selectBoardCount(boardsearch);
+		int listSize = boardsearch.getListSize();
+		PageResult pr = new PageResult(
+				boardsearch.getPage(), 
+				totalCount, 
+				boardsearch.getListSize());
+				
+
+		Map<String, Object> result = new HashMap<>();
+		result.put("list", list);
+		result.put("pr", pr);
+		return result;
 	}
 
 	@Override

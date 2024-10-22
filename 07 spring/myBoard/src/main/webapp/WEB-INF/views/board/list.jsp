@@ -30,5 +30,20 @@
 		</div>
 		
 	</table>
+		<!--  paging 영역 설정 -->
+	<div>
+		<c:if test="${pr.prev}">
+			<a href="list?page=1">[첫페이지]</a>
+			<a href="list?page=${pr.beginPage - 1}">[이전]</a>
+		</c:if>
+		<c:forEach var="i" begin="${pr.beginPage}" end="${pr.endPage}">
+			<a href="list?page=${i}">[${i}]</a>
+		</c:forEach>
+		<c:if test="${pr.next}">
+			<a href="list?page=${pr.endPage + 1}">[다음]</a>
+			<a href="list?page=${pr.lastPage}">[마지막페이지]</a>
+		</c:if>
+	</div>
+	
 </body>
 </html>

@@ -70,5 +70,22 @@
 		SET title = #{title}, content = #{content}
 		WHERE no = #{no}
 	</update>
+	
+	<select id="selectBoard" resultType="Board" parameterType="boardSearch">
+		SELECT *
+		FROM board
+		ORDER BY no desc
+		LIMIT #{offset}, #{listSize}
+	</select>
+	
+	<!-- 게시물 카운트(전체) -->
+	<select id="selectBoardCount" resultType="int" parameterType="boardSearch">
+		SELECT COUNT(*)
+		 FROM board
+	</select>
+	
+	
+	
+	
 
 </mapper>

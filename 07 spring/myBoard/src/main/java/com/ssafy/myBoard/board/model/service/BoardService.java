@@ -2,11 +2,12 @@ package com.ssafy.myBoard.board.model.service;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
+import com.ssafy.myBoard.board.model.BoardSearch;
 import com.ssafy.myBoard.board.model.dto.Board;
 
 public interface BoardService {
-	List<Board> list() throws Exception;
 
 //	void write(Board board) throws Exception;
 
@@ -19,6 +20,8 @@ public interface BoardService {
 	void deleteNo(int no);
 
 	void updateBoard(Board board);
+
+	Map<String, Object> list(BoardSearch boardsearch);
 	
 
 }
