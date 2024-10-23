@@ -23,5 +23,6 @@ public interface BoardDao {
 	
 	List<Board> selectBoard(BoardSearch boardSearch);
 	// 게시물 페이징 처리를 위한 전체 데이터 카운트
-	int selectBoardCount(BoardSearch boardSearch);
+	int selectBoardCount(BoardSearch boardsearch);
+
 }
