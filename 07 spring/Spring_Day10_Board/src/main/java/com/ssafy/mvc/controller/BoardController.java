@@ -1,6 +1,8 @@
 package com.ssafy.mvc.controller;
 
+import java.io.File;
 import java.util.Map;
+import java.util.UUID;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.ssafy.mvc.model.dto.Board;
 import com.ssafy.mvc.model.dto.BoardSearch;
@@ -35,11 +38,11 @@ public class BoardController {
 		Map<String, Object> result = boardService.getBoardList(boardSearch);
 		boolean prev = true;
 		if(page == 1) prev = false;
-//		int endPage = boardService.; ////////// 마지막 페이지 알아야 함~!
 		model.addAttribute("prev", prev);
 		model.addAttribute("boards", result.get("boards"));
 		model.addAttribute("lastPage", result.get("lastPage"));
 		model.addAttribute("startPage", result.get("startPage"));
+		model.addAttribute("endPage", result.get("endPage"));
 		return "/board/list";
 	}
 	
@@ -49,8 +52,18 @@ public class BoardController {
 	}
 	
 	@PostMapping("/write")
-	public String write(@ModelAttribute Board board) {
+	public String write(@ModelAttribute Board board, MultipartFile attach) {
+		String oriName = attach.getOriginalFilename();
+		File file = new File(oriName);
+		//// 여기 이어서 하기! 파일 첨부해야지!!!
+		
+		String dir = 
+		String systemName = UUID.randomUUID().toString().toString() + oriName;
+		
 		boardService.writeBoard(board);
+		
+		
+		
 		return "redirect:list";
 	}
 	

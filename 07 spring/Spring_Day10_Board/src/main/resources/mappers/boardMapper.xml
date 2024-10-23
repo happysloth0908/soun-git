@@ -44,6 +44,11 @@
 		INSERT INTO board (title, writer, content)
 		VALUES (#{title}, #{writer}, #{content});
 	</insert>
+
+	<insert id="insertBoardFile" parameterType="BoardFile">
+		INSERT INTO board (id, ori_name, system_name, file_path)
+		VALUES (#{id}, #{oriName}, #{systemName}, #{filePath});
+	</insert>
 	
 	<!-- 게시글 삭제 -->
 	<delete id="deleteBoard" parameterType="int">

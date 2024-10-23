@@ -25,6 +25,8 @@
 				<textarea class="form-control"  rows="10" cols="10" id="content" name="content"></textarea>
 			</div>
 			
+			<input type="file" name="attach">
+			
 			<button class="btn btn-primary">등록</button>
 		</form>
 	

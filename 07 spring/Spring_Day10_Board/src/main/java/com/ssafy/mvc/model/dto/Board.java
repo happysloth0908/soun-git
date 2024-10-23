@@ -8,8 +8,15 @@ public class Board {
 	private String regDate;
 	private int viewCnt;
 
-	public Board() {
+	private BoardFile boardFile; // 보드랑 연결지어서 만들기 위해
+	public BoardFile getBoardFile() {
+		return boardFile;
 	}
+	public void setBoardFile(BoardFile boardFile) {
+		this.boardFile = boardFile;
+	}
+	
+	public Board() {}
 
 	public Board(String title, String writer, String content) {
 		super();

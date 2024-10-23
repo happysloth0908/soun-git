@@ -3,6 +3,7 @@ package com.ssafy.mvc.model.dao;
 import java.util.List;
 
 import com.ssafy.mvc.model.dto.Board;
+import com.ssafy.mvc.model.dto.BoardFile;
 import com.ssafy.mvc.model.dto.BoardSearch;
 import com.ssafy.mvc.model.dto.SearchCondition;
 
@@ -28,5 +29,7 @@ public interface BoardDao {
 	public List<Board> search(SearchCondition condition);
 
 	public int selectBoardCount(BoardSearch boardSearch);
+
+	public void insertBoardFile(BoardFile boardFile);
 
 }
