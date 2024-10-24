@@ -46,7 +46,8 @@ public class BoardFile{
 		SystemName = systemName;
 	}
 	
-	BoardFile(){}
+	public BoardFile(){}
+	
 	@Override
 	public String toString() {
 		return "BoardFile [id=" + id + ", fileNo=" + fileId + ", oriName=" + oriName + ", filePath=" + filePath

@@ -49,9 +49,9 @@ public class BoardController {
 
 	@PostMapping("/write")
 	public String write(@RequestParam("attach") MultipartFile attach, Board board) throws Exception {
-		String oriName = attach.getOriginalFilename();
-		if (oriName != null && oriName.length() > 0) { // 사용자가 파일을 선택했으면
-			String subDir = new SimpleDateFormat("/yyyy/MM/dd/HH").format(new Date(0));
+		if (attach != null && !attach.isEmpty()) { // 사용자가 파일을 선택했으면
+			String oriName = attach.getOriginalFilename();
+			String subDir = new SimpleDateFormat("/yyyy/MM/DD/HH").format(new Date(0));
 			File dir = new File("c:/SSAFY/uploads" + subDir); // 경로
 			String systemName = UUID.randomUUID().toString() + oriName;
 
@@ -69,6 +69,7 @@ public class BoardController {
 				boardFile.setNo(0); // board 테이블에 데이터가 입력되어야 입력할 수 있음.
 				board.setBoardFile(boardFile);
 			} catch (IOException e) {
+				System.out.println("에러야...");
 				e.printStackTrace();
 				// 로그 기록 또는 사용자에게 에러 메시지 전달
 				return "error-page"; // 에러 페이지로 리다이렉트 또는 에러 메시지를 표시할 페이지

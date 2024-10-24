@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.ssafy.mvc.model.dao.BoardDao;
 import com.ssafy.mvc.model.dto.Board;
+import com.ssafy.mvc.model.dto.BoardFile;
 import com.ssafy.mvc.model.dto.BoardSearch;
 import com.ssafy.mvc.model.dto.SearchCondition;
 
@@ -63,7 +64,9 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public void writeBoard(Board board) {
+		BoardFile boardFile = board.getBoardFile();
 		boardDao.insertBoard(board);
+		
 		boardDao.insertBoardFile(board.getBoardFile());
 	}
 

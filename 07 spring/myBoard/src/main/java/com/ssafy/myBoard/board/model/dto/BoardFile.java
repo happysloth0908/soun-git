@@ -17,9 +17,8 @@ public class BoardFile {
 		this.systemName = systemName;
 		this.no = no;
 	}
-	public BoardFile() {
-		// TODO Auto-generated constructor stub
-	}
+	public BoardFile() {}
+	
 	public int getFileNo() {
 		return fileNo;
 	}

@@ -11,7 +11,8 @@
 	<div class="container">
 		<h2>글작성</h2>
 		<%@ include file="../common/header.jsp" %>
-		<form action="write" method="POST">
+		<form method="POST" action="${pageContext.request.contextPath}/write" 
+		enctype="multipart/form-data">
 			<div class="mb-3">
 				<label for="title" class="form-label">글제목</label>
 				<input type="text" class="form-control" id="title" name="title">
