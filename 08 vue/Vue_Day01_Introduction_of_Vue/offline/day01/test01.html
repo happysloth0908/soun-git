@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> 
+</head>
+<body>
+  <div id="app">
+    {{ msg }} :: {{ msg2 }}
+  </div>
+
+  <script>
+    console.dir(Vue);
+    const {createApp, ref} = Vue; // 구조분해할당 vue 중 일부만 꺼내쓸거임. 
+    const app = createApp({
+      setup () {
+        let msg = "hello";
+        let msg2 = ref("msg2 hello"); // 반응형
+        console.dir(msg2);
+
+        setTimeout(() => {
+          console.log("msg 변경 전")
+          msg = "msg hello~";
+          msg2.value = "msg hello~";
+        }, 5000); // 5초 뒤에 실행
+
+        return {
+          msg,
+          msg2,
+        }
+      }
+    }).mount("#app");
+  </script>
+</body>
+</html>

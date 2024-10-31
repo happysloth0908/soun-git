@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>소운이의 뷰페이지</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+  <div>
+    {{ msg }}
+  </div>
+
+
+  <script>
+    const message = () => {
+      msg = "소운이의 페이지";
+    }
+    message.mount(msg);
+  </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue</title>
+<!--1. CDN 추가 -->
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> 
+
+</head>
+<body>
+  <div id="app">
+    <p>{{message}}</p>
+  </div>
+
+
+
+
+<script>
+  const { createApp, ref } = Vue; // 구조 분해 할당 (Vue 중에서 createApp 을 쓰겠다는거)
+
+  //2. Vue instance 생성 완료 
+  const app = createApp({
+    setup() {
+      const message = ref("Hello World")
+      console.log(message)
+      console.log(message.value)
+      return {
+        // message : message 이랑 같은거임, ES6 부터 
+        message
+      }
+    }
+  })
+
+  //3. DOM 과 연결 하겠다. 
+  app.mount("#app");
+
+
+</script>
+</body>
+</html>

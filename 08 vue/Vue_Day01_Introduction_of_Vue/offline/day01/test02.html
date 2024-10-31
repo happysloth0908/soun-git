@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+  <!--
+    화면이 로딩 시 이름이 출력됨
+    3초 뒤에 영문 이름으로 변경 출력
+  -->
+  <div>
+    {{ name }}
+  </div>
+
+  <script>
+    const {value} = Vue;
+    const outputName = () => {
+      setup: () => {
+        let name = ref "김소운";
+        
+        () => {
+          name = "Kim Soun", 5000
+        }
+      }
+      return {
+        name
+      }
+    }
+    outputName.mount();
+  </script>
+</body>
+</html>

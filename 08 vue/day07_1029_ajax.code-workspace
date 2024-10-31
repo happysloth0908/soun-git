@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../live-web-front/day07_1029_ajax"
+		},
+		{
+			"path": "../../live-web-front/day08_1030_webstorage"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "day07_1029_ajax"
+	}
+}
