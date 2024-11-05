@@ -1,10 +1,10 @@
-package com.ssafy.myBoard;
+package com.ssafy.myboard;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MyBoardApplicationTests {
+class MyboardApplicationTests {
 
 	@Test
 	void contextLoads() {

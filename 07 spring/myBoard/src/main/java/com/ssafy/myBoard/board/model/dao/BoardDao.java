@@ -1,28 +1,26 @@
-package com.ssafy.myBoard.board.model.dao;
+package com.ssafy.myboard.board.model.dao;
 
 import java.util.List;
 
-import com.ssafy.myBoard.board.model.BoardSearch;
-import com.ssafy.myBoard.board.model.dto.Board;
-import com.ssafy.myBoard.board.model.dto.BoardFile;
+import com.ssafy.myboard.board.model.Board;
+import com.ssafy.myboard.board.model.BoardFile;
+import com.ssafy.myboard.board.model.BoardSearch;
 
+/** 게시물 처리 인터페이스 */
 public interface BoardDao {
 	
+	/** 게시물 목록 데이터 */
+	List<Board> selectBoard(BoardSearch boardSearch);
 
-	Board getBoardByNo(int no) ;
+	/** 게시물 페이징 처리를 위한 전체 데이터 카운트 */
+//	<select id="selectBoardCount" resultType="int" parameterType="boardSearch">
+	int selectBoardCount(BoardSearch boardSearch);
+	
+	void insertBoard(Board board);
 
-	void insertBoardFile(BoardFile boardFile) ;
+	void insertBoardFile(BoardFile boardFile);
 
-	void insertBoard(Board board) ;
+	Board selectBoardByNo(int no);
 
 	BoardFile selectBoardFileByNo(int no);
-
-	void deleteBoard(int no);
-
-	void updateBoard(Board board);
-	
-	List<Board> selectBoard(BoardSearch boardSearch);
-	// 게시물 페이징 처리를 위한 전체 데이터 카운트
-	int selectBoardCount(BoardSearch boardsearch);
-
 }

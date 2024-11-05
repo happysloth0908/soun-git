@@ -2,6 +2,7 @@ package com.ssafy.mvc.controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -36,12 +37,18 @@ public class BoardRestController {
 		this.boardService = boardService;
 	}
 
-//	// 게시글 전체조회
-//	@GetMapping("/board")
-//	public ResponseEntity<List<Board>> list() {
-//		List<Board> list = boardService.getBoardList();
+	// 게시글 전체조회
+	@GetMapping("/board")
+	public ResponseEntity<List<Board>> list() {
+		List<Board> list = boardService.getBoardList();
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Access-Control-Allow-Origin", "*"); // 지금은 일단 다 * 허용
+		
+		
+		return new ResponseEntity<>(list, headers, HttpStatus.OK);
 //		return new ResponseEntity<>(list, HttpStatus.OK);
-//	}
+	}
 
 	// 게시글 상세 보기
 	@GetMapping("/board/{id}")
@@ -79,17 +86,18 @@ public class BoardRestController {
 	}
 	
 	//검색
-	@GetMapping("/board")
-	@Operation(summary = "게시글 검색 및 조회", description = "조건에 따른 검색을 수행할 수 있음")
-	public ResponseEntity<?> list(@ModelAttribute SearchCondition condition) {
-		System.out.println(condition);
-		List<Board> list = boardService.search(condition);
-		if(list == null || list.size() == 0) {
-			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
-		}
-		return new ResponseEntity<List<Board>>(list, HttpStatus.OK);
-	}
-	
+//	@GetMapping("/board")
+//	@Operation(summary = "게시글 검색 및 조회", description = "조건에 따른 검색을 수행할 수 있음")
+//	public ResponseEntity<?> list(@ModelAttribute SearchCondition condition) {
+//		System.out.println(condition);
+//		List<Board> list = boardService.search(condition);
+//		
+//		if(list == null || list.size() == 0) {
+//			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+//		}
+//		return new ResponseEntity<List<Board>>(list, HttpStatus.OK);
+//	}
+//	
 	//파일 업로드
 	@PostMapping("/board") //form 형태
 	public ResponseEntity<Void> fileUpload(@RequestParam("file") MultipartFile file, @ModelAttribute Board board){

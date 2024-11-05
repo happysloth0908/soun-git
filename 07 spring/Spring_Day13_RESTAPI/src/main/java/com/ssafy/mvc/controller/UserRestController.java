@@ -41,14 +41,14 @@ public class UserRestController {
 	}
 	
 	//로그인 
-	@PostMapping("/login")
-	public String postMethodName(@RequestBody User, HttpSession session) {
-		//TODO: process POST request
-		
-		return HttpSession sessoin;
-	}
-	
-	//로그아웃
+//	@PostMapping("/login")
+//	public String postMethodName(@RequestBody User, HttpSession session) {
+//		//TODO: process POST request
+//		
+//		return HttpSession sessoin;
+//	}
+//	
+//	//로그아웃
 	
 	
 
