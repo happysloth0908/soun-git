@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -42,11 +43,11 @@ public class BoardRestController {
 	public ResponseEntity<List<Board>> list() {
 		List<Board> list = boardService.getBoardList();
 		
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("Access-Control-Allow-Origin", "*"); // 지금은 일단 다 * 허용
+//		HttpHeaders headers = new HttpHeaders();
+//		headers.add("Access-Control-Allow-Origin", "*"); // 지금은 일단 다 * 허용
+//		
 		
-		
-		return new ResponseEntity<>(list, headers, HttpStatus.OK);
+		return new ResponseEntity<>(list, HttpStatus.OK);
 //		return new ResponseEntity<>(list, HttpStatus.OK);
 	}
 
