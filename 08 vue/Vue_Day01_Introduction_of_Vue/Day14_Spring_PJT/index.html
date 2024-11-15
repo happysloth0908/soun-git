@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJax 요청</title>
+</head>
+<body>
+    <button id="btn">게시글 조회</button>
+    <script>
+        document.querySelector("#btn").addEventListener("click", function(){
+            fetch("http://localhost:8080/chatGPT?message=Hello GPT")
+            .then((response)=>{
+                return response.text() // 리턴 생략도 가능함. 
+            })
+            .then((text) => console.log(text))
+        })
+
+    </script>
+
+</body>
+</html>

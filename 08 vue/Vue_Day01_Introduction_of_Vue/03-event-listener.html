@@ -1,45 +1,46 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <title>Vue</title>
-<!--1. CDN 추가 -->
-<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> 
-
+  <!-- 1. CDN 추가 -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
+
 <body>
   <div id="app">
-    <p>{{message}}</p>
-    <button v-on:click="increment">{{count}}</button>
+    <button id="btn" v-on:click="increment">{{count}}</button>
   </div>
 
 
 
 
-<script>
-  document.querySelector("#id").addEventListener("click", function(){
-    count.value++;
-  })
-  const { createApp, ref } = Vue; // 구조 분해 할당 (Vue 중에서 createApp 을 쓰겠다는거)
+  <script>
+    const { createApp, ref } = Vue; //구조분해할당
 
-  //2. Vue instance 생성 완료 
-  const app = createApp({
-    setup() {
-      const count = ref(0)
-      const increment = function () { // 함수 표현식
-        count.value++; // 카운트 값 증가 , 여기서는 value 써야 함. 
+    // 2. Vue Instance 생성 완료
+    const app = createApp({
+      setup() {
+        const count = ref(0);
+        const increment = function () { //함수 표현식
+          count.value++; //카운트 값을 증가 시키는 메서드
+        }
+        return {
+          count,
+          increment,
+        };
       }
-      return {
-        count,
-        increment,// , 없을 때 오류 많이 나니까 그냥 붙여두기 
-      }
-    }
-  })
+    });
 
-  //3. DOM 과 연결 하겠다. 
-  app.mount("#app");
+    // 3. DOM과 연결을 하겠다.
+    app.mount("#app");
+
+  </script>
 
 
-</script>
+
+
 </body>
+
 </html>

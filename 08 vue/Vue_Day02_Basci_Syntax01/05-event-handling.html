@@ -2,30 +2,25 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <title>FirstVueApp</title>
+    <title>Vue</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   </head>
 
   <body>
     <div id="app">
-      <h1>{{ message }}</h1>
-      <button @click="count++">Count is: {{ count }}</button>
+      <p>Count : {{count}}</p>
+      <button @click="count++">증가</button>
+      <button @click="count--">감소</button>
     </div>
     <script>
       const { createApp, ref } = Vue;
 
       const app = createApp({
         setup() {
-          const message = ref("Hello vue!");
           const count = ref(0);
-
-          return {
-            message,
-            count,
-          };
+          return { count };
         },
       });
-
       app.mount("#app");
     </script>
   </body>
