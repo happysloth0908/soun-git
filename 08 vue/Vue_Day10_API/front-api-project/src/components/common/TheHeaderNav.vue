@@ -6,7 +6,7 @@
       <RouterLink :to="{name: 'boardCreate'}">BoardCreate</RouterLink> | 
       <RouterLink :to="{ name: 'login' }">Login</RouterLink> |
       <RouterLink :to="{ name: 'kakao' }">KakaoMap</RouterLink> |
-
+      <RouterLink :to="{ name: 'youtube' }">Youtube</RouterLink> |
     </nav>
   </div>
 </template>
