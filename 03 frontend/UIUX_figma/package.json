@@ -1,0 +1,7 @@
+{
+    "private" : true,
+    "type" : "module",
+    "name": "ui",
+    "version": "1.0.0",
+    "description": "ui"
+}
